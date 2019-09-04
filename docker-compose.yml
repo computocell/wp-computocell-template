@@ -1,0 +1,42 @@
+version: '3.4'
+services:
+   banco:
+     image: mysql:5.7
+     container_name: banco_wp_dev
+     network_mode: bridge
+     volumes:
+       - vol_wp_data:/var/lib/mysql
+     #restart: always
+     ports:
+      - "3306"
+     environment:
+       MYSQL_ROOT_PASSWORD: senha123
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: user
+       MYSQL_PASSWORD: senha123
+   wordpress: 
+     image: computocell/wordpress:latest
+     container_name: wp_dev
+     network_mode: bridge
+     depends_on:
+       - banco
+     links:
+       - banco
+     ports:
+       - "9002:80"
+     #restart: always
+     volumes:
+       - ./wp-content/:/var/www/html/wp-content 
+     environment:
+       WORDPRESS_DB_HOST: banco:3306
+       WORDPRESS_DB_USER: user
+       WORDPRESS_DB_PASSWORD: senha123
+       VIRTUAL_HOST: dev.wp
+       VIRTUAL_PORT: 9002
+volumes:
+  vol_wp_data:
+    driver: local
+# networks:
+#     default:
+#         external:
+#             name: computocell-rede              
