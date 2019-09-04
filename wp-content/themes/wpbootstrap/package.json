@@ -1,0 +1,20 @@
+{
+  "name": "wpbootstrap",
+  "version": "1.0.0",
+  "description": "Tema para bootstrap no wordpress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jefferson Oliveira <Jefferson.admsistemas@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "g": "^2.0.1",
+    "yarn": "^1.17.3"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}
